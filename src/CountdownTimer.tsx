@@ -9,10 +9,6 @@ const CountdownTimer = (
     props: ICountdownTimerProps
 
 ) => {
-
-
-
-
     const calculateTimeLeft = () => {
         const now = new Date();
         const nextBirthday = new Date(props.date); 
