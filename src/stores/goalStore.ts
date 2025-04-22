@@ -5,22 +5,26 @@ import { create } from "zustand/react";
 import { v4 as uuidv4 } from 'uuid';
 import { persist } from "zustand/middleware";
 
+
+export interface Goal {
+
+    id: string;
+    name: string;
+    targetDate: Date;
+
+}
 interface IGoalStore {
-    goals: Array<{
-        id: string;
-        name: string;
-        targetDate: Date;
-    }>;
+    goals: Goal[];
     addGoal: (name: string, targetDate: Date) => void;
     removeGoal: (name: string) => void;
 
-    selectedGoal: string | null;
+    selectedGoal: Goal | null;
     setSelectedGoal: (id: string | null) => void;
 }
 
 export const useGoalStore = create<IGoalStore>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             goals: [],
             addGoal: (name, targetDate) => {
                 set((state) => ({
@@ -34,7 +38,20 @@ export const useGoalStore = create<IGoalStore>()(
             },
             selectedGoal: null,
             setSelectedGoal: (id: string | null) => {
-                set({ selectedGoal: id });
+                const goal = get().goals.find((goal) => goal.id === id);
+
+                if (goal) {
+                    return set((state) => ({
+                        selectedGoal: goal,
+                    }));
+                } else {
+                    return set((state) => ({
+                        selectedGoal: null,
+                    }));
+                }
+
+
+
             },
 
         }),
