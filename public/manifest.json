@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Days Untill 20",
+  "name": "Days Till",
   "version": "1.0.0",
-  "description": "A Basic Chrome Extension To Count Down The Days Untill 20",
+  "description": "A Basic Chrome Extension To Count Down The Days till a given date",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
