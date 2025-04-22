@@ -46,7 +46,7 @@ export const useGoalStore = create<IGoalStore>()(
                     }));
                 } else {
                     return set((state) => ({
-                        selectedGoal: null,
+                           selectedGoal: null,
                     }));
                 }
 
