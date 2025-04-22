@@ -26,13 +26,13 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="w-20 hover:w-80 group transition-all duration-300 ease-in-out bg-gray-800 h-screen flex flex-col">
+    <aside className={`${isAddingGoal ? 'w-80' : 'w-20 hover:w-80'} transition-all duration-300 ease-in-out bg-gray-800 h-screen flex flex-col group`}>
       {/* Header */}
       <header className="p-4 flex items-center">
         <div className="w-12 h-12 flex items-center justify-center">
           <Target className="w-6 h-6" />
         </div>
-        <div className="flex-1 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className={`flex-1 flex items-center justify-between ${isAddingGoal ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-300`}>
           <h2 className="text-xl font-bold ml-2 whitespace-nowrap">Goals</h2>
           <button
             onClick={() => setIsAddingGoal(true)}
@@ -45,7 +45,7 @@ const Sidebar = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
+      <main className={`flex-1 p-4 ${isAddingGoal ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-300 overflow-hidden`}>
         {/* Add Goal Form */}
         {isAddingGoal && (
           <div className="mb-4 bg-gray-700/50 backdrop-blur-sm p-4 rounded-lg">

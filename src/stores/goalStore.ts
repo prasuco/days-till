@@ -41,10 +41,12 @@ export const useGoalStore = create<IGoalStore>()(
                 const goal = get().goals.find((goal) => goal.id === id);
 
                 if (goal) {
+                    // @ts-ignore
                     return set((state) => ({
                         selectedGoal: goal,
                     }));
                 } else {
+                    // @ts-ignore
                     return set((state) => ({
                            selectedGoal: null,
                     }));
